@@ -1,0 +1,64 @@
+<app-navbar></app-navbar>
+<div class="admin-container">
+  <!-- Formulario de actualización -->
+  <div class="form-container">
+    <h2>Editar Producto</h2>
+
+    <label for="producto">Selecciona un producto:</label>
+    <select id="producto" [(ngModel)]="selectedProductId" (change)="onSelectProduct()">
+      <option *ngFor="let producto of productos" [value]="producto.id">
+        {{ producto.nombre }}
+      </option>
+    </select>
+
+    <!-- Mostrar formulario solo si hay un producto seleccionado -->
+    <div *ngIf="productoSeleccionado" class="product-edit-form">
+      <label>Nombre:</label>
+      <input type="text" [(ngModel)]="productoSeleccionado.nombre" />
+
+      <label>Cantidad:</label>
+      <input type="number" [(ngModel)]="productoSeleccionado.cantidad" />
+
+      <label>Precio:</label>
+      <input type="number" [(ngModel)]="productoSeleccionado.precio" />
+
+      <label>Imagen:</label>
+      <input type="text" [(ngModel)]="productoSeleccionado.imagenUrl" />
+
+      <button (click)="onUpdateProduct()">Actualizar Producto</button>
+    </div>
+  </div>
+
+  <!-- Formulario de Creación de Producto -->
+  <div class="form-container">
+    <h2>Crear Nuevo Producto</h2>
+
+    <label>Nombre:</label>
+    <input type="text" [(ngModel)]="nuevoProducto.nombre" />
+
+    <label>Cantidad:</label>
+    <input type="number" [(ngModel)]="nuevoProducto.cantidad" />
+
+    <label>Precio:</label>
+    <input type="number" [(ngModel)]="nuevoProducto.precio" />
+
+    <label>Imagen:</label>
+    <input type="text" [(ngModel)]="nuevoProducto.imagenUrl" />
+
+    <button (click)="onCreateProduct()">Crear Producto</button>
+  </div>
+
+  <!-- Subir imagen -->
+  <div class="image-upload-container">
+    <h2>Subir Imagen</h2>
+
+    <input type="file" (change)="onImageSelected($event)" accept="image/*" />
+
+    <!-- Vista previa de la imagen -->
+    <div *ngIf="imagePreview" class="image-preview">
+      <img [src]="imagePreview" alt="Vista previa de la imagen">
+    </div>
+
+    <button [disabled]="!selectedImage" (click)="onUploadImage()">Subir Imagen</button>
+  </div>
+</div>

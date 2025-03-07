@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+<div class="productos-container">
+  <h2>Lista de Categorías y Productos</h2>
+
+  <div *ngFor="let categoria of categorias" class="categoria">
+    <h3>{{ categoria.nombre }}</h3>
+    <ul>
+      <li *ngFor="let producto of categoria.productos">
+        <strong>{{ producto.nombre }}</strong> - ${{ producto.precio }}
+        <span *ngIf="producto.imagenUrl">
+          <img [src]="producto.imagenUrl" alt="{{ producto.nombre }}" width="100">
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

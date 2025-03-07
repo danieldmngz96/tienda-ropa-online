@@ -1,0 +1,30 @@
+.productos-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.categoria {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #007bff;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 5px 0;
+}
+
+img {
+  display: block;
+  margin-top: 5px;
+  border-radius: 5px;
+}
